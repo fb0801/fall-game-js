@@ -47,7 +47,7 @@ document.addEventListener("keyup", event => {
 
 });
 
-setInterval(function(){
+var blocks = setInterval(function(){
 var blockLast = document.getElementById("block"+(counter-1));
 var holeLast = document.getElementById("hole"+(counter-1));
 if ( counter > 0){
@@ -81,6 +81,11 @@ if(blockLastTop < 400 || counter ==0){
         var characterLeft =
         parseInt(window.getComputedStyle(character).getPropertyValue("left"));
        var drop = 0;
+       if(characterTop <= 0){
+            alert("Game over. Score"+(counter-9));
+            clearInterval(blocks);
+            location.reload();
+       }
         for (var i = 0; i < currentBlocks.length; i++){
             let current =currentBlocks[i];
             let iblock = document.getElementById("block"+current);
@@ -103,7 +108,9 @@ if(blockLastTop < 400 || counter ==0){
                 }
             }
                 if (drop==0){
+                        if(characterTop < 480){
                     character.style.top = characterTop + 2 + "px";
+                }
                 } else {
                     character.style.top = characterTop - 0.5 + "px";
                 }       
