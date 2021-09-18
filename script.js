@@ -57,18 +57,22 @@ if ( counter > 0){
     parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
 
 }
-//elements for the game
-var block = document.createElement('div');
-var hole = document.createElement('div');
-block.setAttribute("class", "block");
-hole.setAttribute("class", "hole");
-block.setAttribute("id", "block"+counter);//to access with JS
-hole.setAttribute("id", "hole"+counter);
-var random = Math.floor(Math.random() * 360);
-hole.style.left = random + "px";
-game.appendChild(block);
-game.appendChild(hole);
-counter++;
+if(blockLastTop < 400 || counter ==0){
+    //elements for the game
+    var block = document.createElement('div');
+    var hole = document.createElement('div');
+    block.setAttribute("class", "block");
+    hole.setAttribute("class", "hole");
+    block.setAttribute("id", "block"+counter);//to access with JS
+    hole.setAttribute("id", "hole"+counter);
+    block.style.top = blockLastTop + 100 + "px";
+    hole.style.top = holeLastTop + 100 + "px";
 
+    var random = Math.floor(Math.random() * 360);
+    hole.style.left = random + "px";
+    game.appendChild(block);
+    game.appendChild(hole);
+    counter++;
+}
 },1);
 
