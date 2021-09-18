@@ -2,7 +2,7 @@ var character = document.getElementById("character");
 var interval;
 var both = 0; // prevent user from pressing both keys
 var game = document.getElementById("game");
-
+var counter = 0;
 
 
 
@@ -47,7 +47,7 @@ document.addEventListener("keyup", event => {
 
 });
 
-
+setInterval(function(){
 //elements for the game
 var block = document.createElement('div');
 var hole = document.createElement('div');
@@ -55,5 +55,11 @@ block.setAttribute("class", "block");
 hole.setAttribute("class", "hole");
 block.setAttribute("id", "block");//to access with JS
 hole.setAttribute("id", "hole");
+var random = Math.floor(Math.random() * 360);
+hole.style.left = random + "px";
 game.appendChild(block);
 game.appendChild(hole);
+counter++;
+
+},1);
+
