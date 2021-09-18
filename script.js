@@ -48,13 +48,22 @@ document.addEventListener("keyup", event => {
 });
 
 setInterval(function(){
+var blockLast = document.getElementById("block"+(counter-1));
+var holeLast = document.getElementById("hole"+(counter-1));
+if ( counter > 0){
+    var blockLastTop =
+    parseInt(window.getComputedStyle(blockLast).getPropertyValue("top"));
+    var holeLastTop =
+    parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
+
+}
 //elements for the game
 var block = document.createElement('div');
 var hole = document.createElement('div');
 block.setAttribute("class", "block");
 hole.setAttribute("class", "hole");
-block.setAttribute("id", "block");//to access with JS
-hole.setAttribute("id", "hole");
+block.setAttribute("id", "block"+counter);//to access with JS
+hole.setAttribute("id", "hole"+counter);
 var random = Math.floor(Math.random() * 360);
 hole.style.left = random + "px";
 game.appendChild(block);
