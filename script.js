@@ -76,6 +76,11 @@ if(blockLastTop < 400 || counter ==0){
     counter++;
 
 }
+        var characterTop = 
+        parseInt(window.getComputedStyle(character).getPropertyValue("top"));
+        var characterLeft =
+        parseInt(window.getComputedStyle(character).getPropertyValue("left"));
+       var drop = 0;
         for (var i = 0; i < currentBlocks.length; i++){
             let current =currentBlocks[i];
             let iblock = document.getElementById("block"+current);
@@ -90,6 +95,17 @@ if(blockLastTop < 400 || counter ==0){
                     iblock.remove();
                     ihole.remove();
                 }
-        }
+                if (iblockTop - 20 < characterTop && iblockTop > characterTop){
+                    drop ++;
+                    if(iholeLeft <=characterLeft && iholeLeft + 20>=characterLeft){
+                        drop = 0;
+                    }
+                }
+            }
+                if (drop==0){
+                    character.style.top = characterTop + 2 + "px";
+                } else {
+                    character.style.top = characterTop - 0.5 + "px";
+                }       
 },1);
 
