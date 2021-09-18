@@ -1,6 +1,12 @@
 var character = document.getElementById("character");
 var interval;
 var both = 0; // prevent user from pressing both keys
+var game = document.getElementById("game");
+
+
+
+
+
 
 function moveLeft(){
     //moving the ball left
@@ -46,4 +52,8 @@ document.addEventListener("keyup", event => {
 var block = document.createElement('div');
 var hole = document.createElement('div');
 block.setAttribute("class", "block");
-block.setAttribute("class", "block");
+hole.setAttribute("class", "hole");
+block.setAttribute("id", "block");//to access with JS
+hole.setAttribute("id", "hole");
+game.appendChild(block);
+game.appendChild(hole);
