@@ -43,8 +43,6 @@ document.addEventListener("keyup", event => {
     //stop listening when the user no longer holding the key
     clearInterval(interval);
     both=0;
-
-
 });
 
 var blocks = setInterval(function(){
@@ -82,7 +80,7 @@ if(blockLastTop < 400 || counter ==0){
         parseInt(window.getComputedStyle(character).getPropertyValue("left"));
        var drop = 0;
        if(characterTop <= 0){
-            alert("Game over. Score"+(counter-9));
+            alert("Game over. Score: "+(counter-9));
             clearInterval(blocks);
             location.reload();
        }
@@ -92,6 +90,8 @@ if(blockLastTop < 400 || counter ==0){
             let ihole = document.getElementById("hole"+current);
             let iblockTop = 
             parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
+            let iholeLeft = 
+            parseFloat(window.getComputedStyle(ihole).getPropertyValue("left"));
             iblock.style.top = iblockTop - 0.5 + "px";
             ihole.style.top = iblockTop - 0.5 + "px";
                 if(iblockTop < -20){
