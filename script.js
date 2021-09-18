@@ -3,7 +3,7 @@ var interval;
 var both = 0; // prevent user from pressing both keys
 var game = document.getElementById("game");
 var counter = 0;
-
+var currentBlocks = [];
 
 
 
@@ -72,7 +72,24 @@ if(blockLastTop < 400 || counter ==0){
     hole.style.left = random + "px";
     game.appendChild(block);
     game.appendChild(hole);
+    currentBlocks.push(counter); //keep track of the blocks in use
     counter++;
+
 }
+        for (var i = 0; i < currentBlocks.length; i++){
+            let current =currentBlocks[i];
+            let iblock = document.getElementById("block"+current);
+            let ihole = document.getElementById("hole"+current);
+            let iblockTop = 
+            parseFloat(window.getComputedStyle(iblock).getPropertyValue("top"));
+            iblock.style.top = iblockTop - 0.5 + "px";
+            ihole.style.top = iblockTop - 0.5 + "px";
+                if(iblockTop < -20){
+                    //if we can no longer see the blocks then hide/remove them
+                    currentBlocks.shift();
+                    iblock.remove();
+                    ihole.remove();
+                }
+        }
 },1);
 
